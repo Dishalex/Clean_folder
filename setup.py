@@ -12,5 +12,5 @@ setup(name='Clean folder',
                    "Operating System :: OS Independent"],
       packages=['clean_folder'],
       include_package_data=True,
-      packages=find_namespace_packages(),
-      entry_points={'console_scripts': ['clean_my_folder=clean_folder.clean:main']})
+      #      packages=find_namespace_packages(),
+      entry_points={'console_scripts': ['clean_my_folder=clean_folder.clean: main']})

@@ -1,7 +1,7 @@
 import shutil
 import sys
 import uuid
-from normalize import normalize
+from clean_folder.normalize import normalize
 from pathlib import Path
 
 CATEGORIES = {"Pictures": ['.JPEG', '.PNG', '.JPG', '.SVG'],
@@ -38,6 +38,7 @@ def move_file(file: Path, root_dir: Path, category: str) -> None:
     resulted_by_categories[category] = resulted_by_categories.get(
         category, []) + [new_name.name]
 
+
 def get_categories(file: Path) -> str:
     ext = file.suffix.upper()
     for cat, exts in CATEGORIES.items():
@@ -46,6 +47,7 @@ def get_categories(file: Path) -> str:
             return cat
     other_cats.add(ext)
     return "Other"
+
 
 def sort_folder(path: Path) -> None:
     for item in path.glob("**/*"):
@@ -56,6 +58,7 @@ def sort_folder(path: Path) -> None:
                 unpack_archives(item, path, cat)
             else:
                 move_file(item, path, cat)
+
 
 def delete_folders(path: Path) -> None:
     for item in path.iterdir():
